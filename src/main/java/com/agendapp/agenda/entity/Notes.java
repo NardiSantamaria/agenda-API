@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Notes {
     @Id
+    @Column(name="id_note")
     private int id;
     private String tittle;
     @Column(name="image_path")
