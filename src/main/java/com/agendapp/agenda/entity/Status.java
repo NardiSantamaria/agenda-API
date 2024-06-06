@@ -5,10 +5,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 @Entity
-@Table(name="task_category")
+@Table(name="status")
 public class Status {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int id_status;
-    private String category_name;
+    private String status_name;
 }

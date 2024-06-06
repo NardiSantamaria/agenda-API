@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="task_type")
+@Table(name="types")
 public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

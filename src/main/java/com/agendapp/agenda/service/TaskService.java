@@ -2,6 +2,9 @@ package com.agendapp.agenda.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
 import org.springframework.stereotype.Service;
 
 import com.agendapp.agenda.entity.Task;
@@ -33,9 +36,10 @@ public class TaskService {
     }
 
     public List<Task> getListTasks(){
-        List<Task> listOfTask;
-        listOfTask=(List<Task>) taskRepository.findAll();
-        return listOfTask;
+        List<Task> listOfTask=(List<Task>) taskRepository.findAll();
+        List<Task> listaObjeto = StreamSupport.stream(listOfTask.spliterator(),false)
+        .collect(Collectors.toList());
+        return listaObjeto;
     }
 
 }
