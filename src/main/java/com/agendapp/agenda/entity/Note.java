@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class Notes {
+public class Note {
     @Id
     @Column(name="id_note")
     private int id;

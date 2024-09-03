@@ -4,15 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
-
 import org.springframework.stereotype.Service;
-
 import com.agendapp.agenda.entity.Task;
 import com.agendapp.agenda.repository.TaskRepository;
 
 @Service
 public class TaskService {
+    private static TaskService tasks= null;
     private TaskRepository taskRepository;
+
+    public static TaskService create(TaskRepository taskRepository){
+        if(tasks==null){
+            tasks=new TaskService(taskRepository);
+        }
+        return tasks;
+    }
 
     public TaskService(TaskRepository taskRepository){
         this.taskRepository=taskRepository;
