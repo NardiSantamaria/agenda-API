@@ -8,10 +8,10 @@ import jakarta.persistence.Table;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="types")
+@Table(name="item_type")
 public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id_type;
-    private String type_name;
+    private int id_item_type;
+    private String item_type_name;
 }

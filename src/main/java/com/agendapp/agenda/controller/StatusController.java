@@ -16,12 +16,13 @@ import com.agendapp.agenda.service.StatusService;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/status")
-public class StatusController {
+public class StatusController implements Test2Interface {
     @Autowired
     StatusService statusService;
 
     public StatusController(StatusService statusService){
         this.statusService= statusService;
+        
     }
     @GetMapping("/getAll")
     public ResponseEntity<List<Status>> getStatusList(){
@@ -33,4 +34,21 @@ public class StatusController {
         Optional<Status> status= statusService.getStatusById(id);
         return status;
     }
+
+    @Override
+    public void volar() {
+        System.out.println("Estoy volando");
+        variableFI.method1();
+    }
+
+    CatInterface lamda = str -> {return str.equals("Miau");};
+   
+
+    FuncionalInterTest variableFI = () -> {
+        System.out.println("Implementacion de interfaz funcional");
+    };
+
+    
+    
+  
 }

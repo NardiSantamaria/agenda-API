@@ -44,8 +44,19 @@ public class TaskService {
     public List<Task> getListTasks(){
         List<Task> listOfTask=(List<Task>) taskRepository.findAll();
         List<Task> listaObjeto = StreamSupport.stream(listOfTask.spliterator(),false)
+        .filter(t->t.getTaskScheduledDateTime()!=null)
         .collect(Collectors.toList());
         return listaObjeto;
     }
+
+    public List<Task> getListTasksNoSqueduled(){
+        List<Task> listOfTask=(List<Task>) taskRepository.findAll();
+        List<Task> listaObjeto = StreamSupport.stream(listOfTask.spliterator(),false)
+        .filter(t->t.getTaskScheduledDateTime()==null)
+        .collect(Collectors.toList());
+        return listaObjeto;
+    }
+
+    
 
 }
