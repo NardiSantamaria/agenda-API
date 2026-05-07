@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import com.agendapp.agenda.controller.ItemFactory;
+import com.agendapp.agenda.controller.Test2Interface;
 import com.agendapp.agenda.entity.Registry;
 @SpringBootApplication
 public class AgendaApplication {
@@ -15,6 +16,7 @@ public class AgendaApplication {
 		try {
 			Object obj= ItemFactory.createItem("com.agendapp.agenda.entity.Notification");
 			System.out.println(obj);
+			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -25,7 +27,10 @@ public class AgendaApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("*").allowedOrigins("*");
+				registry.addMapping("/**")
+					.allowedOrigins("*")
+					.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+					.allowedHeaders("*");
 			}
 	
 		};

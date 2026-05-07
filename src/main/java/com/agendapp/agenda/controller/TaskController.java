@@ -7,16 +7,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.agendapp.agenda.entity.Task;
 import com.agendapp.agenda.service.TaskService;
 
-@CrossOrigin("*")
+@CrossOrigin(origins ="*")
 @RestController
 @RequestMapping("/task")
 public class TaskController {
@@ -60,8 +62,8 @@ public class TaskController {
         return taskService.updateTask(task);
     }
 
-    @DeleteMapping("/task/delete")
-    public boolean createTask(@RequestBody int id){
+    @DeleteMapping("/task/delete/{id}")
+    public boolean deleteTask(@PathVariable Integer id){
         return taskService.deleteTask(id);
     }
 }
